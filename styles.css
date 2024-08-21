@@ -1,0 +1,384 @@
+/* Основные стили для body */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f0f0; /* Светлый фон для контраста */
+}
+
+/* Стили для секции создания задачи */
+.task-creation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#task-input {
+    width: 750px;
+    height: 25px;
+    font-size: 18px;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px; /* Закругленные углы */
+    margin-top: 50px; /* Установите нужное значение отступа */
+}
+:root {
+    --primary-color: #EFD334;
+    --hover-color: #EFD334;
+    --background-color: #f9f9f9;
+}
+
+#create-task-button {
+    width: 100px;
+    height: 45px; /* Высота кнопки */
+    background-color: #28a745; /* Зеленый цвет */
+    color: white;
+    border: none;
+    border-radius: 5px; /* Закругленные углы */
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Плавный переход цвета */
+    user-select: none;
+    margin-top: 50px; /* Установите нужное значение отступа */
+}
+
+#create-task-button:hover {
+    background-color: #218838; /* Темнее при наведении */
+}
+
+/* Стили для секции распределения задач */
+#task-distribution {
+    width: 880px; /* Ширина поля распределения задач */
+    height: 130px; /* Высота поля */
+    border: 1px solid #ccc;
+    margin-bottom: 50px;
+    overflow-y: auto; /* Вертикальная прокрутка */
+    background-color: white; /* Белый фон */
+    border-radius: 5px; /* Закругленные углы */
+}
+
+/* Стили для контейнера дней */
+.days-container {
+    width: 100%; /* Полная ширина контейнера */
+    height: 500px; /* Высота контейнера */
+    overflow-x: hidden; /* Горизонтальная прокрутка */
+    border: 1px solid #f0f0f0; /* Граница контейнера */
+    border-radius: 5px; /* Закругленные углы */
+    background-color: #f0f0f0; /* Белый фон */
+    overflow-x: auto; /* Горизонтальная прокрутка */
+}
+
+.days-wrapper {
+    display: flex; /* Горизонтальное размещение колонок */
+    transition: transform 0.3s ease; /* Плавный переход при перемещении */
+}
+
+/* Стили для колонки дня */
+.day-column {
+    width: 250px; /* Фиксированная ширина колонки */
+    height: 500px; /* Фиксированная высота колонки */
+    border: 1px solid #0000004d;
+    margin-right: 10px; /* Отступ между колонками */
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #f9f9f9; /* Светлый фон для колонок */
+    border-radius: 5px; /* Закругленные углы */
+    flex-shrink: 0; /* Предотвращение сжатия колонок */
+    overflow-y: auto; /* Вертикальная прокрутка */
+}
+
+.day-column:last-child {
+    margin-right: 0; /* Убираем отступ для последней колонки */
+}
+
+.day-header {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333; /* Темный цвет для заголовка */
+    text-align: center; /* Центрирование заголовка */
+    user-select: none; /* Запретить выделение текста */
+}
+
+.day-date {
+    font-size: 14px;
+    color: #666; /* Более светлый цвет для даты */
+    text-align: center; /* Центрирование даты */
+    margin-bottom: 10px; /* Отступ снизу от даты */
+    user-select: none; /* Запретить выделение текста */
+}
+
+/* Стили для элемента задачи */
+.task-item {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    overflow: hidden; /* Добавляем скрытие содержимого */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: 5px; /* Закругленные углы */
+    position: relative; /* Для кнопки удаления */
+    transition: background-color 0.3s; /* Плавный переход цвета */
+    max-height: 300px; /* Устанавливаем максимальную высоту задачи */
+}
+
+.task-item:hover {
+    background-color: #d4d4d4; /* Цвет при наведении */
+}
+
+/* Стили для модального окна */
+.task-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%; /* Ширина модального окна адаптивная */
+    max-width: 1100px; /* Максимальная ширина */
+    height: 450px; /* Высота модального окна */
+    border-radius: 5px; /* Закругленные углы */
+    overflow-y: auto; /* Вертикальная прокрутка */
+    box-sizing: border-box; /* Учитываем отступы и границы при расчете ширины */
+    position: relative; /* Позиционирование */
+}
+
+.modal-text {
+    max-width: 900px;
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: block; /* или inline-block */
+    word-break: break-all;
+    hyphens: auto;
+    position: relative;
+}
+
+.modal-text::after {
+    content: "\A";
+    position: absolute;
+    top: 0;
+    left: 120ch; /* 120 символов */
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 85px;
+    font-weight: bold;
+    user-select: none; /* Запретить выделение текста */
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.delete-button {
+    position: absolute;
+    top: 2px; /* Немного отступаем от верхнего края */
+    right: 12px; /* Немного отступаем от правого края */
+    font-size: 30px;
+    cursor: pointer;
+    color: #dc3545; /* Красный цвет для кнопки удаления */
+}
+
+.delete-button:hover {
+    color: #c82333; /* Темнее при наведении */
+}
+
+.edit-button {
+    font-size: 50px;
+    color: #aaa;
+    cursor: pointer;
+    position: relative; /* Изменено на relative */
+    top: 10px;
+    right: 20px;
+    margin-left: 30px; /* Уменьшено значение margin-left */
+    user-select: none; /* Запретить выделение текста */
+}
+
+.edit-button:hover {
+    color: #000;
+}
+
+.edit-button:active {
+    color: #000;
+}
+
+/* Контейнер для прокрутки дней */
+.days-scroll-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px; /* Отступ сверху от полей дней */
+}
+
+/* Стили для навигационных кнопок */
+.navigation-buttons {
+    display: flex;
+    justify-content: center; /* Центрирование кнопок */
+    margin-top: 10px; /* Отступ сверху */
+}
+
+#prev-day-button, #next-day-button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 28px;
+    
+    cursor: pointer;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+    #task-input {
+        width: 100%; /* Полная ширина на мобильных устройствах */
+    }
+
+    #task-distribution, .days-container {
+        width: 100%; /* Полная ширина на мобильных устройствах */
+    }
+
+    .day-column {
+        width: 100%; /* Полная ширина колонок на мобильных устройствах */
+        margin-bottom: 10px; /* Отступ между колонками */
+    }
+}
+
+/* Стили для кнопок приоритета */
+/* Стили для кнопок приоритета */
+.priority-button {
+    font-size: 18px;
+    cursor: pointer;
+    margin-right: 10px;
+    border: none;
+    background: none; /* Убираем подложку */
+    padding: 5px;
+}
+/* Основные стили для body */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Цвет фона страницы */
+}
+
+/* Стили для контейнера кнопок */
+.button-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #c56161; /* Белый фон для контейнера кнопок */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Тень для контейнера */
+}
+
+/* Стили для кнопок */
+.priority-button {
+    background: none; /* Убираем фон */
+    border: none; /* Убираем границу */
+    font-size: 15px; /* Размер шрифта */
+    margin: 0 5px; /* Отступы между кнопками */
+    cursor: pointer; /* Указатель при наведении */
+    transition: color 0.3s, background-color 0.3s; /* Плавный переход */
+}
+
+/* Цвета для кнопок приоритета */
+#low-priority-button {
+    color: black;
+    
+    border-radius: 25px;
+}
+
+#medium-priority-button {
+    color: black;
+    
+    border-radius: 25px;
+}
+
+#high-priority-button {
+    color: black;
+    
+    border-radius: 25px;
+}
+
+/* Стили при наведении на кнопки */
+.priority-button:hover {
+    color: black; /* Цвет текста становится черным при наведении */
+}
+
+/* Дополнительные стили для кнопок */
+#low-priority-button:hover {
+    color: black;
+    background-color: #d4d4d4; /* Цвет фона для кнопки "Обычная" при наведении */
+}
+
+#medium-priority-button:hover {
+    color: black;
+    background-color: #F9ECA4; /* Цвет фона для кнопки "Нормальный" при наведении */
+}
+
+#high-priority-button:hover {
+    color: black;
+    background-color: #F6768E; /* Цвет фона для кнопки "Важное" при наведении */
+}
+/* Стили для активной кнопки */
+.priority-button.active {
+    color: black; /* Цвет текста активной кнопки */
+}
+
+/* Цвета фона для активных кнопок */
+#low-priority-button.active {
+    background-color: #d4d4d4; /* Цвет фона для кнопки "Обычная" */
+}
+
+#medium-priority-button.active {
+    background-color: #F9ECA4; /* Цвет фона для кнопки "Нормальный" */
+}
+
+#high-priority-button.active {
+    background-color: #F6768E; /* Цвет фона для кнопки "Важное" */
+}
+.selected {
+    border: 2px solid #4A90E2;/*цвет выделения задач*/
+    background-color: #e0f7ff;
+}
+.task-container {
+    width: 45%;
+    min-height: 200px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    float: left;
+    position: relative;
+}
+
+.task-item {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #6b676717;
+    background-color: #f0f0f0;
+    cursor: move;
+    min-height: -5px; /* Устанавливает минимальную высоту в 50 пикселей */
+
+}
+
+.task-item.dragging {
+    opacity: 0.5;
+}
